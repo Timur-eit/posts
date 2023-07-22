@@ -28,6 +28,3 @@ import { AggPostModel, CommetCountMap, UserNameMap } from "./types/types";
 
     console.log('Agg Data', aggPostData);
 })();
-
-
-    
