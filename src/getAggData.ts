@@ -1,5 +1,5 @@
 import { getComments, getPosts, getUsers } from "./api";
-import { AggPostModel, CommetCountMap, UserNameMap } from "./types/types";
+import { AggPostModel, CommetCountMap, UserNameMap } from "./types";
 
 (async () => {
     const [
