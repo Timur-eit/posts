@@ -8,18 +8,18 @@ import { AggPostModel, CommetCountMap, UserNameMap } from "./types";
         users,
     ] = await Promise.all([getPosts(), getComments(), getUsers()]);
 
-    const usersNameMap = users.reduce((acc, { id, username }) => {
-        acc[id] = username;
-        return acc;
+    const usersNameMap = users.reduce((users, { id, username }) => {
+        users[id] = username;
+        return users;
     }, {} as UserNameMap);
 
-    const commentsCountMap = comments.reduce((acc, { postId }) => {
-        if (postId in acc) {
-            acc[postId] += 1;
+    const commentsCountMap = comments.reduce((comments, { postId }) => {
+        if (postId in comments) {
+            comments[postId] += 1;
         } else {
-            acc[postId] = 1;
+            comments[postId] = 1;
         }
-        return acc;
+        return comments;
     }, {} as CommetCountMap);
 
     const aggPostData: AggPostModel[] = posts.map(({ id, userId, title }) => {
